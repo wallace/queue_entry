@@ -1,21 +1,22 @@
 class QueueProcessingWorker < BackgrounDRb::MetaWorker
   set_worker_name :queue_processing_worker
+  set_no_auto_load true #insure QueueProcessingWorker is not loaded on bdrb start up
+
+  # worker initialization method
   def create(args = nil)
-    # this method is called, when worker is loaded for the first time
-     
-    #TODO -- check that queue contains recurring tasks such as auto-enrollment
-    #processing, letter generation and curriculum status check for all accounts
-    #(meta task that calls methods that generate the tasks per account)
-     
-    logger.info "startup"
-    TzTime.zone = TimeZone.new(0)
-    QueueEntry.find_and_restart_already_started_jobs_for_current_server
+    logger.info "QueueProcessingWorker startup: #{Time.now}"
   end
 
-  def run_next_job
-    logger.info "run jext job"
-    QueueEntry.run_next_job
+  def start_running_jobs
+    NewRelic::Agent.manual_start
+    while true
+      begin
+        QueueEntry.run_next_job
+        sleep 10 # sleep this much before polling for a new job
+      rescue # workers should never die but only log errors and try again
+        logger.info "QueueProcessingWorker Error: #{$!}"
+        logger.info "QueueProcessingWorker: #{Time.now}\n" + $!.backtrace.join("\n")
+      end
+    end
   end
-
 end
-

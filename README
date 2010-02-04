@@ -1,0 +1,2 @@
+Used with an older version of backgroundrb.  We fork when a bdrb worker
+processes a job so that leaked memory is reclaimed after the job is complete.
