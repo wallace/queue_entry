@@ -1,115 +1,17 @@
 --- 
 queue_entries_001: 
-  queue_job_server_id: 
   started_on: 
-  queued_on: <%= Time.now %>
+  queued_on: 
   completed_on: 
-  category: system tasks - auto enrollments
+  category: 
   account_id: 
   lock_version: "0"
-  scheduled_for: <%= Time.today %>
-  action_klass: Account
-  resource_id: 
+  queue_job_server_id: 
+  action: IntegrationUser~1~import
+  scheduled_for: 
   id: "1"
   description: 
+  worker_id: 
   action_args: 
-  recurring_interval: <%= 1.day %>
-  action_id: 
-  user_id: "0"
-  action_method: check_all_auto_enrollments_for_new_enrollments
-queue_entries_002: 
-  queue_job_server_id: 
-  started_on: 
-  queued_on: <%= Time.now %>
-  completed_on: 
-  category: system tasks - curriculum updates
-  account_id: 
-  lock_version: "0"
-  scheduled_for: <%= Time.today + 10.seconds %>
-  action_klass: Account
-  resource_id: 
-  id: "2"
-  description: 
-  action_args: 
-  recurring_interval: <%= 1.day %>
-  action_id: 
-  user_id: "0"
-  action_method: check_all_enrollments_for_curriculum_updates
-queue_entries_003: 
-  queue_job_server_id: 
-  started_on: 
-  queued_on: <%= Time.now %>
-  completed_on: 
-  category: system tasks - letter triggers
-  account_id: 
-  lock_version: "0"
-  scheduled_for: <%= Time.today + 20.seconds %>
-  action_klass: Account
-  resource_id: 
-  id: "3"
-  description: 
-  action_args: 
-  recurring_interval: <%= 1.day %>
-  action_id: 
-  user_id: "0"
-  action_method: process_all_account_triggers
-queue_entries_004: 
-  queue_job_server_id: 
-  started_on: 
-  queued_on: <%= Time.now %>
-  completed_on: 
-  category: system tasks - integration log cleanup
-  account_id: 
-  lock_version: "0"
-  scheduled_for: <%= Time.today + 30.seconds %>
-  action_klass: Integration
-  resource_id: 
-  id: "4"
-  description: 
-  action_args: |
-    --- 172800
-
-  recurring_interval: <%= 1.day %>
-  action_id: 
-  user_id: "0"
-  action_method: clean_up_unfinished_integration_creations_older_than
-queue_entries_005: 
-  queue_job_server_id: 
-  started_on: 
-  queued_on: <%= Time.now %>
-  completed_on: 
-  category: system tasks - log entry cleanup
-  account_id: 
-  lock_version: "0"
-  scheduled_for: <%= Time.today + 40.seconds %>
-  action_klass: LogEntry
-  resource_id: 
-  id: "5"
-  description: 
-  action_args: |
-    --- 1209600
-
-  recurring_interval: <%= 1.day %>
-  action_id: 
-  user_id: "0"
-  action_method: clean_up_log_entries_older_than
-queue_entries_006: 
-  queue_job_server_id: 
-  started_on: 
-  queued_on: <%= Time.now %>
-  completed_on: 
-  category: system tasks - long running job notifier
-  account_id: 
-  lock_version: "0"
-  scheduled_for: <%= Time.now + 5.minutes %>
-  action_klass: QueueEntry
-  resource_id: 
-  id: "6"
-  description: 
-  action_args: |
-    --- 1800
-
-  recurring_interval: <%= 5.minutes %>
-  action_id: 
-  user_id: "0"
-  action_method: report_long_running_jobs_older_than
+  recurring_interval: 
+  user_id: 
